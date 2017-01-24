@@ -12,17 +12,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" git-gutter"
+"git-gutter"
 Plug 'airblade/vim-gitgutter'
-"code completioni
+"code completion
 Plug 'Valloric/YouCompleteMe'
-" on demand loading
+"on demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "This is to generate a compilation database
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 "This is to enable good tmux navigationi
 Plug 'christoomey/vim-tmux-navigator'
-
+"This is the ack plug in for vim to do easy searches
+Plug 'mileszs/ack.vim'
 call plug#end()
 " air-line theme
  let g:airline_theme='light'
@@ -66,7 +67,7 @@ call plug#end()
      set list
      set listchars=tab:▸\.
      set colorcolumn=80
-
+     "Find whitespace and you can remove it with shift WS
      set showcmd
      highlight ExtraWhitespace ctermbg=red guibg=red
      match ExtraWhitespace /\s\+$/
@@ -84,7 +85,7 @@ call plug#end()
       noremap H :nohl<cr>
       noremap <leader>jd :YcmCompleter GoTo<CR>
       let g:tmux_navigator_no_mappings = 1
-
+      " Key remap for tmux
       nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>i
       nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
       nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
