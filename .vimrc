@@ -14,9 +14,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " git-gutter"
 Plug 'airblade/vim-gitgutter'
-
+"code completioni
+Plug 'Valloric/YouCompleteMe'
 " on demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"This is to generate a compilation database
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+"This is to enable good tmux navigationi
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 " air-line theme
  let g:airline_theme='light'
@@ -61,6 +67,7 @@ call plug#end()
      set listchars=tab:▸\.
      set colorcolumn=80
 
+     set showcmd
      highlight ExtraWhitespace ctermbg=red guibg=red
      match ExtraWhitespace /\s\+$/
      autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -75,4 +82,11 @@ call plug#end()
       noremap <Right> <NOP>
       noremap <Left> <NOP>
       noremap H :nohl<cr>
-      
+      noremap <leader>jd :YcmCompleter GoTo<CR>
+      let g:tmux_navigator_no_mappings = 1
+
+      nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>i
+      nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+      nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+      nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+      nnoremap <silent> <c-v> :TmuxNavigatePrevious<cr>
