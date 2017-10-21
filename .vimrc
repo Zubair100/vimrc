@@ -5,7 +5,16 @@ set clipboard=unnamed
 set cursorline
 set rnu
 set nu
-set hlsearch
+set hlsearch 
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 "Plugins"
 
 call plug#begin('~/.vim/plugged')
@@ -14,16 +23,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "git-gutter"
 Plug 'airblade/vim-gitgutter'
-"code completion
-Plug 'Valloric/YouCompleteMe'
 "on demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"This is to generate a compilation database
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 "This is to enable good tmux navigationi
 Plug 'christoomey/vim-tmux-navigator'
 "This is the ack plug in for vim to do easy searches
 Plug 'mileszs/ack.vim'
+"This is to enable swift syntax highligting
+Plug 'vim-syntastic/syntastic'
+
+Plug 'keith/swift.vim'
+
 call plug#end()
 " air-line theme
  let g:airline_theme='light'
@@ -78,6 +88,7 @@ call plug#end()
 
      " Key remap"
       nnoremap WS :%s/\s\+$//<cr>
+      nnoremap NT :NERDTreeToggle<cr>
       noremap <Up> <NOP>
       noremap <Down> <NOP>
       noremap <Right> <NOP>
